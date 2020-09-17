@@ -9,4 +9,7 @@ fun main() {
         addSprite(ball)
         addSprite(racket)
     }
+
+    val music = Music("./music.wav")
+    music.startMusic()
 }
