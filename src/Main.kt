@@ -1,4 +1,6 @@
 import java.awt.Color
+import java.awt.event.KeyEvent
+import java.awt.event.KeyListener
 
 fun main() {
 
@@ -8,8 +10,23 @@ fun main() {
     TableWindow("Ping Pong Chingadasos", "./background.jpg").apply {
         addSprite(ball)
         addSprite(racket)
+        addKeyListener(object : KeyListener {
+            override fun keyTyped(e: KeyEvent?) {}
+
+            override fun keyPressed(e: KeyEvent?) {
+                when (e?.keyCode) {
+                    KeyEvent.VK_UP -> racket.moveUp()
+                    KeyEvent.VK_LEFT -> racket.moveLeft()
+                    KeyEvent.VK_RIGHT -> racket.moveRight()
+                    KeyEvent.VK_DOWN -> racket.moveDown()
+                }
+                repaint()
+            }
+
+            override fun keyReleased(e: KeyEvent?) {}
+
+        })
     }
 
-    val music = Music("./music.wav")
-    music.startMusic()
+    Music("./music.wav").startMusic()
 }
