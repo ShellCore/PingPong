@@ -9,13 +9,6 @@ class Racket(figure: Figure, position: Position) : Sprite(figure, position) {
         const val LEFT_LIMIT = 5
     }
 
-    override fun paint(g: Graphics?) {
-        g?.apply {
-            color = figure.color
-            fillRoundRect(position.x, position.y, figure.width, figure.height, 15, 15)
-        }
-    }
-
     fun moveUp() {
         if (position.y > TOP_LIMIT + figure.height) {
             position.y -= 15

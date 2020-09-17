@@ -13,6 +13,4 @@ abstract class Sprite(
             y = initialPosition.y
         }
     }
-
-    abstract fun paint(g: Graphics?)
 }
