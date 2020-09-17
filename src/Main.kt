@@ -4,7 +4,14 @@ import java.awt.event.KeyListener
 
 fun main() {
 
-    val ball = Ball(Figure(20, 20, Color.WHITE), Position(50, 50))
+    val ball = Ball(Figure(20, 20, Color.WHITE), Position(50, 50), 100, object : MainListener {
+        override fun fail() {
+        }
+
+        override fun success() {
+        }
+    })
+
     val racket = Racket(Figure(55, 15, Color.CYAN), Position(165, 535))
 
     TableWindow("Ping Pong Chingadasos", "./background.jpg").apply {
@@ -26,7 +33,14 @@ fun main() {
             override fun keyReleased(e: KeyEvent?) {}
 
         })
+
+        while (true) {
+            ball.move()
+            repaint()
+        }
     }
 
-    Music("./music.wav").startMusic()
+
+
+//    Music("./music.wav").startMusic()
 }
