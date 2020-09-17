@@ -1,10 +1,13 @@
 import java.awt.Color
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
+import javax.swing.Timer
 
 fun main() {
 
-    val ball = Ball(Figure(20, 20, Color.WHITE), Position(50, 50), 100, object : MainListener {
+    Music("./music.wav").startMusic()
+
+    val ball = Ball(Figure(20, 20, Color.WHITE), Position(50, 50), object : MainListener {
         override fun fail() {
         }
 
@@ -34,13 +37,10 @@ fun main() {
 
         })
 
-        while (true) {
+        Timer(1000/24) {
             ball.move()
             repaint()
-        }
+        }.start()
     }
 
-
-
-//    Music("./music.wav").startMusic()
 }
